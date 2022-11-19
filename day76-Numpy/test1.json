@@ -1,0 +1,25 @@
+{
+    "Role": [
+        "男主",
+        "女主",
+        "男配"
+    ],
+    "Options": {
+        "男主": {
+            "name": "Andy",
+            "age": "21",
+            "hobby": "skating"
+        },
+        "女主": {
+            "name": "Anna",
+            "age": "21",
+            "hobby": "piano"
+        },
+        "男配": {
+            "name": "Allen",
+            "age": "21",
+            "hobby": "video game"
+        }
+    },
+    "items": "water"
+}
