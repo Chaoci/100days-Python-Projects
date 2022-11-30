@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <title>HomePage</title>
+    <script src="static/src/jq.js"></script>
+    <script src="static/src/test.js"></script>
+</head>
+<body class='font-sans bg-slate-600 cursor-default'>
+    <div class="w-full">
+        <header class="banner bg-slate-500 p-20 pb-10">
+            <div class="pagetitle text-center">
+                <h1 class='text-white text-4xl font-mono font-bold'>My Daily</h1>
+                <p class='text-lg mt-10 text-white'>{{date}}</p>
+                <p class='text-base mt-3 text-white'>Today's temp is between &nbsp<span class="text-pink-500">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
+                <a class="text-sm text-left text-blue-300" href="https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=66" target="_blank">Taichung's weather for week</a>
+                <p>{% if data['weather'][0]['id'] < 700:%}
+                    <span class="text-red-400">記得帶傘喔</span>
+                    {%else%}
+                    <span class="text-white">今天不用帶傘</span>
+                    {%endif%}</p>
+            </div>
+        </header>
+        <section class="flex justify-center">
+            <div class="news_area w-4/5 text-black p-10">
+                <h2 class="heading text-3xl text-white text-center cursor-pointer">Today's Top Headline</h2>
+                <div class="news_container hidden">
+                {%for news in news_obj:%}
+                <a class="text-black news_link" href="{{news.url}}" target="_blank"><div class="news_block cursor-default mt-5 bg-blue-200 p-5 rounded-md">
+                    <h2 class="text-black text-2xl font-bold">{{news.title}}</h2>
+                    {%if news.author != None or news.description != None %}
+                    <h3>{{news.author}} {{news.published}}</h3>
+                    <p>{{news.description}}</p>
+                    {%else%}
+                    <p>Click For More Information</p>
+                    {%endif%}
+                    <a class="text-black" href="{{news.url}}" targe="_blank">read</a>
+                </div></a>
+                {%endfor%}
+                </div> 
+            </div>
+        </section>
+        <form action="http://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q"/>
+            <input type="submit" value="search" />
+        </form>
+</body>
+</html>
