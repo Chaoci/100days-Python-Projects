@@ -4,6 +4,8 @@ import requests
 import pandas as pd
 import datetime as dt
 from news import News
+## for secure
+from config import appid, news, lat, lon
 
 ## date
 now = dt.date.today()
@@ -25,8 +27,6 @@ date = f"{now.year} {mon[now.month]} {now.day}"
 
 ## weather api
 endpoint = "https://api.openweathermap.org/data/2.5/weather?"
-lat, lon = 24.175746, 120.704863
-appid = "53975d0982d5081161f5efa3db4247c7"
 lang = "zh_TW"
 
 parameters = {
@@ -41,7 +41,6 @@ min_temp = round(data['main']['temp_min'] - 273.15,2)
 max_temp = round(data['main']['temp_max'] - 273.15,2)
 
 ## news api
-news= '9c709e8d873f405cac0b051250205bec'
 news_endpoint = "https://newsapi.org/v2/top-headlines?"
 news_parameters = {
     "country":"tw",
