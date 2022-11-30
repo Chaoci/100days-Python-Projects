@@ -37,19 +37,19 @@ parameters = {
 }
 a= requests.get(endpoint,params=parameters)
 data = a.json()
-min_temp = round(data['main']['temp_min'] - 273.15,2)
-max_temp = round(data['main']['temp_max'] - 273.15,2)
+min_temp = round(data['main']['temp_min'] - 273.15,1)
+max_temp = round(data['main']['temp_max'] - 273.15,1)
 
 ## news api
 news_endpoint = "https://newsapi.org/v2/top-headlines?"
 news_parameters = {
-    "country":"tw",
+    "country":"us",
     "apiKey":news,
 }
 
 news_data = requests.get(news_endpoint,params=news_parameters).json()
 news_data_list = []
-for news_post in news_data['articles'][:5]:
+for news_post in news_data['articles'][:6]:
     news_obj = News( 
                     news_title=news_post["title"],
                     news_author=news_post["author"],

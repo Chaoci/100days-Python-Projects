@@ -15,7 +15,7 @@
             <div class="pagetitle text-center">
                 <h1 class='text-white text-4xl font-mono font-bold'>My Daily</h1>
                 <p class='text-lg mt-10 text-white'>{{date}}</p>
-                <p class='text-base mt-3 text-white'>Today's temp is between &nbsp<span class="text-pink-500">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
+                <p class='text-base mt-3 text-white'>Current temp is between &nbsp<span class="text-pink-500">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
                 <a class="text-sm text-left text-blue-300" href="https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=66" target="_blank">Taichung's weather for week</a>
                 <p>{% if data['weather'][0]['id'] < 700:%}
                     <span class="text-red-400">記得帶傘喔</span>
@@ -28,18 +28,19 @@
             <div class="news_area w-4/5 text-black p-10">
                 <h2 class="heading text-3xl text-white text-center cursor-pointer">Today's Top Headline</h2>
                 <div class="news_container hidden">
-                {%for news in news_obj:%}
-                <a class="text-black news_link" href="{{news.url}}" target="_blank"><div class="news_block cursor-default mt-5 bg-blue-200 p-5 rounded-md">
-                    <h2 class="text-black text-2xl font-bold">{{news.title}}</h2>
-                    {%if news.author != None or news.description != None %}
-                    <h3>{{news.author}} {{news.published}}</h3>
-                    <p>{{news.description}}</p>
-                    {%else%}
-                    <p>Click For More Information</p>
-                    {%endif%}
-                    <a class="text-black" href="{{news.url}}" targe="_blank">read</a>
-                </div></a>
-                {%endfor%}
+                    <div class="box grid grid-cols-3 gap-3">
+                    {%for news in news_obj:%}
+                        <a class="news_block cursor-pointer mt-5 bg-blue-200 p-5 rounded-md block" href="{{news.url}}" target="_blank">
+                            <h2 class="text-black text-2xl font-bold">{{news.title}}</h2>
+                            {%if news.author != None or news.description != None %}
+                            <h3 class="text-sm text-gray-500">Post By {{news.author}} {{news.published}}</h3>
+                            <p>{{news.description}}</p>
+                            {%else%}
+                            <p>Click For More Information</p>
+                            {%endif%}
+                        </a>
+                    {%endfor%}
+                    </div>
                 </div> 
             </div>
         </section>
