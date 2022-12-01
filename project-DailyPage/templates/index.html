@@ -16,12 +16,22 @@
                 <h1 class='text-white text-4xl font-mono font-bold'>My Daily</h1>
                 <p class='text-lg mt-10 text-white'>{{date}}</p>
                 <p class='text-base mt-3 text-white'>Current temp is between &nbsp<span class="text-pink-500">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
-                <a class="text-sm text-left text-blue-300" href="https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=66" target="_blank">Taichung's weather for week</a>
+                {%if min_temp < 20 and min_temp > 15:%}
+                <p class="text-base text-blue-300">NOW is a little bit cool.</p>
+                {%elif min_temp < 15 %}
+                <p class="text-base text-blue-100">NOW is freaking cold</p>
+                {%elif min_temp >= 20 and min_temp < 25:%}
+                <p class="text-base text-orange-400">NOW is warm or little hot</p>
+                {%else:%}
+                <p class="text-base text-red-500">Today is hot!!!</p>
+                {%endif%}
+
                 <p>{% if data['weather'][0]['id'] < 700:%}
-                    <span class="text-red-400">記得帶傘喔</span>
+                    <span class="text-red-400">Need umbrella!</span>
                     {%else%}
-                    <span class="text-white">今天不用帶傘</span>
+                    <span class="text-white">The day without umbrella</span>
                     {%endif%}</p>
+                <a class="text-sm text-center text-blue-300" href="https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=66" target="_blank">Taichung's weather for week</a>
             </div>
         </header>
         <section class="flex justify-center">
@@ -42,6 +52,21 @@
                     {%endfor%}
                     </div>
                 </div> 
+            </div>
+        </section>
+        <section class="flex justify-center">
+            <div class="nba_area w-4/5 p-10">
+                <h2 class="nba_title text-3xl text-white text-center cursor-pointer">NBA Match</h2>
+                <div class="nba_container hidden">
+                    <div class="box grid grid-cols-4 gap-3 mt-5">
+                    {%for nba in nba_obj:%}
+                        <div class="nba_display text-center bg-blue-300 rounded-lg">
+                                <p class="w-full flex justify-around"><span class="block text-center text-xl py-2 px-0 font-bold text-white">{{nba.homeTeam}}</span><span class="block text-center text-xl py-2 px-0 font-bold text-white">{{nba.awayTeam}}</span></p>
+                                <p class="block pb-3 text-2xl">{{ nba.homescore }} : {{ nba.awayscore}}</p>
+                        </div>
+                    {%endfor%}
+                    </div>
+                </div>
             </div>
         </section>
 </body>
