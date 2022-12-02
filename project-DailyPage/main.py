@@ -1,19 +1,17 @@
 from flask import Flask, render_template
-#npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch
 import requests
 import pandas as pd
 import datetime as dt
 from class_api import News, NBA
 from nba_api.live.nba.endpoints import scoreboard
-import os
 ## for secure
-# from config import appid, news, lat, lon
+import os
 appid = os.getenv("APPID")
 news = os.getenv("NEWS")
 lat = os.getenv("LAT")
 lon = os.getenv("LON")
+
 ## date
-# now = dt.date.today()
 mon = {
     1:'Jan',
     2:'Feb',

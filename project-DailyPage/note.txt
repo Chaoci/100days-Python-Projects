@@ -2,3 +2,4 @@
             <input type="text" name="q"/ class="w-[250px]">
             <input type="submit" value="search" />
         </form>
+npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch
