@@ -5,6 +5,9 @@ module.exports = {
     "./static/src/**/*.js"
   ],
   theme: {
+    fontFamily:{
+      "my":"'Varela Round'",
+    },
     extend: {},
   },
   plugins: [],

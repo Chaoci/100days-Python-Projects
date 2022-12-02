@@ -5,10 +5,13 @@ import pandas as pd
 import datetime as dt
 from class_api import News, NBA
 from nba_api.live.nba.endpoints import scoreboard
-
+import os
 ## for secure
-from config import appid, news, lat, lon
-
+# from config import appid, news, lat, lon
+appid = os.getenv("APPID")
+news = os.getenv("NEWS")
+lat = os.getenv("LAT")
+lon = os.getenv("LON")
 ## date
 # now = dt.date.today()
 mon = {
@@ -70,7 +73,7 @@ def get_all_posts():
                         )
         news_data_list.append(news_obj)
     
-    #nab api
+    #nba api
     games = scoreboard.ScoreBoard()
     nba_data_list = []
     nba_data = games.get_dict()
