@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <title>HomePage</title>
     <script src="static/src/jq.js"></script>
     <script src="static/src/test.js"></script>
@@ -14,9 +16,9 @@
     <div class="w-full">
         <header class="banner bg-slate-500 p-20 pb-10">
             <div class="pagetitle text-center">
-                <h1 class='text-white text-4xl font-my font-bold'>My Daily</h1>
-                <p class='text-lg mt-10 text-white'>{{date}}</p>
-                <p class='text-base mt-3 text-white'>Current temp is between &nbsp<span class="text-pink-500">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
+                <h1 class='text-white text-7xl font-title-font font-extrabold'>My Daily</h1>
+                <p class='text-3xl mt-10 text-white'>{{date}}</p>
+                <p class='text-base mt-3 text-white'>Current temp is between &nbsp<span class="text-pink-500 text-xl">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500 text-xl">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
                 {%if min_temp < 20 and min_temp > 15:%}
                 <p class="text-base text-blue-300">NOW is a little bit cool.</p>
                 {%elif min_temp < 15 %}
@@ -28,9 +30,9 @@
                 {%endif%}
 
                 <p>{% if data['weather'][0]['id'] < 700:%}
-                    <span class="text-red-400">Need umbrella!</span>
+                    <span class="text-red-400">Need umbrella!<i class="fa-solid fa-cloud-showers-heavy"></i></span>
                     {%else%}
-                    <span class="text-white">The day without umbrella</span>
+                    <span class="text-white"><i class="fa-solid fa-sun text-orange-400"></i> No need umbrella</span>
                     {%endif%}</p>
                 <a class="text-sm text-center text-blue-300" href="https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=66" target="_blank">Taichung's weather for week</a>
                 <form action="http://www.google.com/search" method="get" target="_blank">
@@ -61,7 +63,7 @@
         </section>
         <section class="flex justify-center">
             <div class="nba_area w-4/5 p-10">
-                <h2 class="nba_title text-3xl text-white text-center cursor-pointer">NBA Match</h2>
+                <h2 class="nba_title text-3xl text-white text-center cursor-pointer"><i class="fa-solid fa-basketball text-orange-600"></i> NBA Match <i class="fa-solid fa-basketball text-orange-600"></i></h2>
                 <div class="nba_container hidden">
                     <div class="box grid grid-cols-4 gap-3 mt-5">
                     {%for nba in nba_obj:%}

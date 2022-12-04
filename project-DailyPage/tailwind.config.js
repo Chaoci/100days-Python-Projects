@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily:{
       "my":"'Varela Round'",
+      "title-font":"'Dancing Script',cursive"
     },
     extend: {},
   },
