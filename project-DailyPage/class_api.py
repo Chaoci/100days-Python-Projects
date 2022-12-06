@@ -12,3 +12,10 @@ class NBA():
         self.awayTeam = awayTeam
         self.homescore = homescore
         self.awayscore = awayscore
+        
+
+class Movie():
+    def __init__(self, movie_title, movie_poster, movie_release):
+        self.title = movie_title
+        self.poster = movie_poster
+        self.date = movie_release

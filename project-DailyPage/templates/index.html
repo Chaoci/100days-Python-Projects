@@ -17,7 +17,10 @@
         <header class="banner bg-slate-500 p-20 pb-10">
             <div class="pagetitle text-center">
                 <h1 class='text-white text-7xl font-title-font font-extrabold'>My Daily</h1>
-                <p class='text-3xl mt-10 text-white'>{{date}}</p>
+                <div class="date-time flex justify-center mt-5">
+                    <p class='text-3xl mr-4 text-white'>{{date}}</p>
+                    <div class="digital-clock text-3xl font-my">00:00:00</div>
+                </div>
                 <p class='text-base mt-3 text-white'>Current temp is between &nbsp<span class="text-pink-500 text-xl">&nbsp{{min_temp}}&nbsp</span> to <span class="text-pink-500 text-xl">&nbsp{{max_temp}}&nbsp</span> Celsius</p>
                 {%if min_temp < 20 and min_temp > 15:%}
                 <p class="text-base text-blue-300">NOW is a little bit cool.</p>
@@ -36,14 +39,20 @@
                     {%endif%}</p>
                 <a class="text-sm text-center text-blue-300" href="https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=66" target="_blank">Taichung's weather for week</a>
                 <form action="http://www.google.com/search" method="get" target="_blank">
-                    <input type="text" name="q"/ class="w-[250px] h-[55px] p-2 mt-4 rounded-full" placeholder=" search"><br>
+                    <input type="text" name="q"/ class="w-[250px] h-[55px] p-2 mt-4 rounded-full" placeholder=" Search"><br>
                     <input type="submit" value="search" class="mt-4 border border-white p-2 rounded-xl"/>
                 </form>
             </div>
         </header>
+        <section class="function-button flex justify-center">
+            <div class="selection w-4/5 grid grid-cols-3">
+                <h2 class="news_select text-center cursor-pointer text-3xl block p-4">Top News</h2>
+                <h2 class="nba_select text-center cursor-pointer text-3xl block p-4">NBA Match</h2>
+                <h2 class="movie_select text-center cursor-pointer text-3xl block p-4">Moive</h2>
+            </div>
+        </section>
         <section class="flex justify-center">
             <div class="news_area w-full lg:w-4/5 text-black lg:p-2 p-2">
-                <h2 class="heading text-3xl text-white text-center cursor-pointer mt-10">Today's Top Headline</h2>
                 <div class="news_container hidden">
                     <div class="box grid lg:grid-cols-3 sm:grid-cols-1 gap-3">
                     {%for news in news_obj:%}
@@ -62,14 +71,28 @@
             </div>
         </section>
         <section class="flex justify-center">
-            <div class="nba_area w-4/5 p-10">
-                <h2 class="nba_title text-3xl text-white text-center cursor-pointer"><i class="fa-solid fa-basketball text-orange-600"></i> NBA Match <i class="fa-solid fa-basketball text-orange-600"></i></h2>
+            <div class="nba_area w-4/5">
                 <div class="nba_container hidden">
-                    <div class="box grid grid-cols-4 gap-3 mt-5">
+                    <div class="box grid grid-cols-4 gap-3">
                     {%for nba in nba_obj:%}
                         <div class="nba_display text-center bg-blue-300 rounded-lg">
                                 <p class="w-full flex justify-around"><span class="block text-center text-xl py-2 px-0 font-bold text-white">{{nba.homeTeam}}</span><span class="block text-center text-xl py-2 px-0 font-bold text-white">{{nba.awayTeam}}</span></p>
                                 <p class="block pb-3 text-2xl">{{ nba.homescore }} : {{ nba.awayscore}}</p>
+                        </div>
+                    {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="flex justify-center">
+            <div class="movie_area w-4/5">
+                <div class="movie_container hidden">
+                    <div class="movie_box grid grid-cols-4 gap-5">
+                    {%for movie in movie_obj:%}
+                        <div class="movie_display">
+                            <img src="{{movie.poster}}" alt="poster" class="w-[300px] h-[400px]">
+                            <h3>{{movie.title}}</h3>
+                            <p>{{movie.date}}</p>
                         </div>
                     {%endfor%}
                     </div>
